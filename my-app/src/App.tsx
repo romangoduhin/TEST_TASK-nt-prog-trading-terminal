@@ -1,9 +1,12 @@
 import './App.css'
+import Ticker from "./components/Ticker/Ticker";
 
 function App() {
-   return (
-    <div>Nt prog app</div>
-  )
+    return (
+        <>
+            <Ticker/>
+        </>
+    )
 }
 
 export default App
