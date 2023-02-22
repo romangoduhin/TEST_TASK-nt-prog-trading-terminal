@@ -1,4 +1,4 @@
-import {Request} from "../../../types/globalTypes";
+import {FormSubmitValues} from "../../../types/globalTypes";
 
 export interface FormValues {
     instrument: string,
@@ -6,5 +6,5 @@ export interface FormValues {
 }
 
 export interface FormProps {
-    handleSubmit: (values: Request) => void
+    handleSubmit: (values: FormSubmitValues) => void
 }

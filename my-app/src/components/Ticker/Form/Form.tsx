@@ -7,7 +7,7 @@ import {FormProps, FormValues} from "./Form.types";
 function Form({handleSubmit}: FormProps) {
     const form = useForm<FormValues>({
         initialValues: {
-            instrument: "",
+            instrument: instruments[0].value,
             amount: 1,
         },
         validate: {
@@ -19,7 +19,7 @@ function Form({handleSubmit}: FormProps) {
     function onSubmit(side: string) {
         form.validate();
 
-        if(form.isValid()) {
+        if (form.isValid()) {
             const inputsData = form.values;
             const values = {...inputsData, side};
             handleSubmit(values);

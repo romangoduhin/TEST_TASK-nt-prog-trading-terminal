@@ -1,11 +1,18 @@
-import styles from "./App.module.scss"
 import Ticker from "./components/Ticker/Ticker";
+import RequestTable from "./components/RequestTable/RequestTable";
+import {Card} from "@mantine/core";
 
 function App() {
     return (
-        <div className={styles.container}>
+        <Card shadow="sm"
+              display="flex"
+              sx={{flexDirection: 'row', justifyContent: "space-evenly"}}
+              radius="md"
+              withBorder
+        >
             <Ticker/>
-        </div>
+            <RequestTable/>
+        </Card>
     )
 }
 
