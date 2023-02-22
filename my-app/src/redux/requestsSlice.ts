@@ -20,7 +20,7 @@ export const requestsSlice = createSlice({
                 changeTime: getCurrentDate(),
                 status: 'active',
                 side: action.payload.side,
-                price: 1000,
+                price: action.payload.price,
                 amount: action.payload.amount,
                 instrument: action.payload.instrument,
             }

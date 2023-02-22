@@ -1,3 +1,3 @@
-export const isArrEmpty = (arr: any[]) => {
+export const isArrEmpty = (arr: any[]): boolean => {
     return !arr.length
 }
