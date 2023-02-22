@@ -1,13 +1,18 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, NumberInput, Select, SimpleGrid, Text} from "@mantine/core";
 import {instruments} from "../meta";
 import {useForm} from "@mantine/form";
 import {FormProps, FormValues} from "./Form.types";
+import {Side} from "../../../types/globalTypes";
+import {getId} from "../../../helpers/getId";
 
 function Form({handleSubmit}: FormProps) {
+    const [sellPrice, setSellPrice] = useState<number>(0);
+    const [buyPrice, setBuyPrice] = useState<number>(0);
+
     const form = useForm<FormValues>({
         initialValues: {
-            instrument: "",
+            instrument: instruments[0].value,
             amount: 1,
         },
         validate: {
@@ -16,15 +21,31 @@ function Form({handleSubmit}: FormProps) {
         }
     })
 
-    function onSubmit(side: string) {
+    function onSubmit(side: Side) {
         form.validate();
 
-        if(form.isValid()) {
+        if (form.isValid()) {
             const inputsData = form.values;
-            const values = {...inputsData, side};
+            const id = getId();
+            const price = side === "sell" ? sellPrice : buyPrice;
+            const values = {...inputsData, side, price, id};
             handleSubmit(values);
         }
     }
+
+    useEffect(() => { //for displaying the instrument price
+        const currentInst = instruments.find(el => form.values.instrument === el.value);
+
+        if (currentInst) {
+            const {sell_price, buy_price} = currentInst;
+            setBuyPrice(buy_price)
+            setSellPrice(sell_price)
+            return
+        }
+        setBuyPrice(0)
+        setSellPrice(0)
+    }, [form.values.instrument]);
+
 
     return (
         <form>
@@ -40,6 +61,7 @@ function Form({handleSubmit}: FormProps) {
 
                 <NumberInput
                     required
+                    type="number"
                     label="Input Amount"
                     placeholder="Amount"
                     {...form.getInputProps('amount')}
@@ -47,14 +69,14 @@ function Form({handleSubmit}: FormProps) {
 
                 <SimpleGrid cols={2} spacing="xs" verticalSpacing="xs">
                     <SimpleGrid cols={1}>
-                        <Text weight="500" size="xl" align="center">8.99.8</Text>
+                        {!!sellPrice && <Text weight="500" size="xl" align="center">{sellPrice}</Text>}
                         <Button onClick={() => onSubmit('sell')} size="md" color="red" uppercase>
                             sell
                         </Button>
                     </SimpleGrid>
 
                     <SimpleGrid cols={1}>
-                        <Text weight="500" size="xl" align="center">8.99.9</Text>
+                        {!!buyPrice && <Text weight="500" size="xl" align="center">{buyPrice}</Text>}
                         <Button onClick={() => onSubmit('buy')} size="md" color="green" uppercase>
                             buy
                         </Button>
