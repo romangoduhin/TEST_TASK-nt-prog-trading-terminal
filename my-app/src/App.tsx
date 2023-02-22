@@ -7,6 +7,7 @@ function App() {
     return (
         <Card shadow="sm"
               display="flex"
+              p="lg"
               sx={{flexDirection: 'row', justifyContent: "space-evenly"}}
               radius="md"
               withBorder
@@ -20,6 +21,7 @@ function App() {
                 <Ticker/>
                 <Chart/>
             </SimpleGrid>
+
             <RequestTable/>
         </Card>
     )

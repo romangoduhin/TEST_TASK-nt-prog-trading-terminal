@@ -15,7 +15,7 @@ function Ticker() {
     }
 
     return (
-        <Card h="44vh" shadow="sm" p="lg" radius="md" withBorder>
+        <Card h="35vh" shadow="sm" p="lg" radius="md" withBorder>
             <Form handleSubmit={handleSubmit}/>
         </Card>
     );

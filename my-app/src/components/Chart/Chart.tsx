@@ -26,7 +26,7 @@ function Chart() {
         },
     };
 
-    return <Card h="44vh" shadow="sm" p={0} radius="md" withBorder>
+    return <Card h="55vh" shadow="sm" p={0} radius="md" withBorder>
         <Text fz="md" fw={500} mt="sm" ml="lg" align="left">Price chart</Text>
         <ReactEcharts style={{
             height: '95%',
