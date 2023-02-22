@@ -1,3 +1,5 @@
 export const getCurrentDate = () => {
-    return new Date().toJSON();
+    return new Date().toISOString()
+        .replace('T', ' ')
+        .replace('Z', '')
 }

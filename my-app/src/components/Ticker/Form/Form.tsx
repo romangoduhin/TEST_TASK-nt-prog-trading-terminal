@@ -40,6 +40,7 @@ function Form({handleSubmit}: FormProps) {
 
                 <NumberInput
                     required
+                    type="number"
                     label="Input Amount"
                     placeholder="Amount"
                     {...form.getInputProps('amount')}
