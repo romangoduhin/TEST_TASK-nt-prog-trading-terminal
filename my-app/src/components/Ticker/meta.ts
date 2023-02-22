@@ -6,3 +6,5 @@ export const instruments = [
     {value: "cnh_rub", label: "CNH/RUB", sell_price: 4.01, buy_price: 4.02},
     {value: "rub_chn", label: "RUB/CNH", sell_price: 15.71, buy_price: 15.72}
 ]
+
+export const updatedStatuses = ['rejected', 'cancelled', 'filled']

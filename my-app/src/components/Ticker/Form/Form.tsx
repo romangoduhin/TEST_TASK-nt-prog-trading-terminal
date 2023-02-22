@@ -4,6 +4,7 @@ import {instruments} from "../meta";
 import {useForm} from "@mantine/form";
 import {FormProps, FormValues} from "./Form.types";
 import {Side} from "../../../types/globalTypes";
+import {getId} from "../../../helpers/getId";
 
 function Form({handleSubmit}: FormProps) {
     const [sellPrice, setSellPrice] = useState<number>(0);
@@ -25,8 +26,9 @@ function Form({handleSubmit}: FormProps) {
 
         if (form.isValid()) {
             const inputsData = form.values;
+            const id = getId();
             const price = side === "sell" ? sellPrice : buyPrice;
-            const values = {...inputsData, side, price};
+            const values = {...inputsData, side, price, id};
             handleSubmit(values);
         }
     }

@@ -1,8 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 import type {PayloadAction} from '@reduxjs/toolkit';
 import {RequestsState} from "./types";
-import {FormSubmitValues, Request} from "../types/globalTypes";
-import {getId} from "../helpers/getId";
+import {FormSubmitValues, Request, ReqUpdateValues} from "../types/globalTypes";
 import {getCurrentDate} from "../helpers/getCurrentDate";
 
 const initialState: RequestsState = {
@@ -15,7 +14,7 @@ export const requestsSlice = createSlice({
     reducers: {
         addRequest: (state, action: PayloadAction<FormSubmitValues>) => {
             const reqData: Request = {
-                id: getId(),
+                id: action.payload.id,
                 creationTime: getCurrentDate(),
                 changeTime: getCurrentDate(),
                 status: 'active',
@@ -25,9 +24,19 @@ export const requestsSlice = createSlice({
                 instrument: action.payload.instrument,
             }
             state.requests.push(reqData)
+        },
+        updateRequestStatus: (state, action: PayloadAction<ReqUpdateValues>) => {
+            state.requests = state.requests.map(el => {
+                if (el.id === action.payload.id) {
+                    const newEl = {...el}
+                    newEl.status = action.payload.status
+                    return newEl
+                }
+                return el;
+            })
         }
     },
 })
 
-export const {addRequest} = requestsSlice.actions;
+export const {addRequest, updateRequestStatus} = requestsSlice.actions;
 export default requestsSlice.reducer;

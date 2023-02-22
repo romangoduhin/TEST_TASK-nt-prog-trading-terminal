@@ -13,8 +13,14 @@ export interface Request {
 }
 
 export interface FormSubmitValues {
+    id: number,
     instrument: string,
     amount: number,
     side: Side,
     price: number
+}
+
+export interface ReqUpdateValues {
+    id: number,
+    status: Status,
 }
