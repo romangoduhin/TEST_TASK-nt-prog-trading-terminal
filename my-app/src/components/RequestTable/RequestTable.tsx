@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Card, Table, Text} from "@mantine/core";
+import {Card, ScrollArea, Table, Text} from "@mantine/core";
 import {useAppSelector} from "../../redux/hooks";
 import {isArrEmpty} from "../../helpers/isArrEmpty";
 import {getInstrLabel} from "../../helpers/getInstrLabel";
@@ -35,29 +35,32 @@ function RequestTable() {
 
     return (
         <Card w="65vw" h="90vh" shadow="sm" p="lg" radius="md" withBorder>
+
             {isVisible
-                ? <Table horizontalSpacing="sm"
-                         verticalSpacing="sm"
-                         fontSize="md"
-                         striped
-                         highlightOnHover
-                         withBorder
-                         withColumnBorders
-                >
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Creation time</th>
-                        <th>Change time</th>
-                        <th>Status</th>
-                        <th>Side</th>
-                        <th>Price</th>
-                        <th>Amount</th>
-                        <th>Instrument</th>
-                    </tr>
-                    </thead>
-                    <tbody>{rows}</tbody>
-                </Table>
+                ? <ScrollArea h="100%">
+                    <Table horizontalSpacing="sm"
+                           verticalSpacing="sm"
+                           fontSize="md"
+                           striped
+                           highlightOnHover
+                           withBorder
+                           withColumnBorders
+                    >
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Creation time</th>
+                            <th>Change time</th>
+                            <th>Status</th>
+                            <th>Side</th>
+                            <th>Price</th>
+                            <th>Amount</th>
+                            <th>Instrument</th>
+                        </tr>
+                        </thead>
+                        <tbody>{rows}</tbody>
+                    </Table>
+                </ScrollArea>
                 : <Text w="100%"
                         h="100%"
                         display="flex"
