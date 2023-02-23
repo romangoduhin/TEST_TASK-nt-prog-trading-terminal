@@ -5,7 +5,7 @@ import {FooterProps} from "./Footer.types";
 
 function Footer({fullData, currentPage, setCurrentPage, pagesCount}: FooterProps) {
     return (
-        <SimpleGrid mt="sm" display="flex" cols={2} style={{flexDirection: "row", justifyContent: "space-between"}}>
+        <SimpleGrid h="5%" mt="sm" display="flex" cols={2} style={{flexDirection: "row", justifyContent: "space-between"}}>
             <Pagination page={currentPage} onChange={setCurrentPage} total={pagesCount}/>
 
             <DownloadCsv data={fullData}/>

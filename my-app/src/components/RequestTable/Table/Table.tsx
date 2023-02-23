@@ -20,7 +20,7 @@ function Table({fullData, currentData}: TableProps) {
     }
 
     return (
-        <ScrollArea h="95%">
+        <ScrollArea h="85%">
             <MantineTable horizontalSpacing="sm"
                           verticalSpacing="sm"
                           fontSize="md"
