@@ -46,7 +46,6 @@ function Form({handleSubmit}: FormProps) {
         setSellPrice(0)
     }, [form.values.instrument]);
 
-
     return (
         <form>
             <SimpleGrid cols={1}>

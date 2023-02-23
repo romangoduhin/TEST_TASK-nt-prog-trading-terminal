@@ -6,6 +6,7 @@ import {getCurrentDate} from "../helpers/getCurrentDate";
 
 const initialState: RequestsState = {
     requests: [],
+    tickers: [1, 2],
 }
 
 export const requestsSlice = createSlice({
@@ -35,9 +36,16 @@ export const requestsSlice = createSlice({
                 }
                 return el;
             })
+        },
+        addTicker: (state) => {
+            const lastItem = state.tickers[state.tickers.length - 1]
+            state.tickers.push(lastItem + 1)
+        },
+        removeTicker: (state, action: PayloadAction<{ id: number }>) => {
+            state.tickers = state.tickers.filter(el => el !== action.payload.id)
         }
     },
 })
 
-export const {addRequest, updateRequestStatus} = requestsSlice.actions;
+export const {addRequest, updateRequestStatus, addTicker, removeTicker} = requestsSlice.actions;
 export default requestsSlice.reducer;

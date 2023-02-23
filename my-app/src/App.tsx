@@ -1,7 +1,6 @@
-import Ticker from "./components/Ticker/Ticker";
 import RequestTable from "./components/RequestTable/RequestTable";
-import {Card, SimpleGrid} from "@mantine/core";
-import Chart from "./components/Chart/Chart";
+import {Card} from "@mantine/core";
+import Tickers from "./components/Tickers/Tickers";
 
 function App() {
     return (
@@ -12,16 +11,7 @@ function App() {
               radius="md"
               withBorder
         >
-            <SimpleGrid h="90vh"
-                        w="30vw"
-                        display="flex"
-                        style={{flexDirection: "column", justifyContent: "space-between"}}
-                        cols={1}
-            >
-                <Ticker/>
-                <Chart/>
-            </SimpleGrid>
-
+            <Tickers/>
             <RequestTable/>
         </Card>
     )
