@@ -5,19 +5,14 @@ import {isArrEmpty} from "../../helpers/isArrEmpty";
 import {getInstrLabel} from "../../helpers/getInstrLabel";
 import {Request} from "../../types/globalTypes"
 import {Pagination} from '@mantine/core';
+import usePagination from "../../helpers/hooks/usePagination";
 
 function RequestTable() {
     const requests = useAppSelector((state) => state.requests.requests);
 
     const [isVisible, setIsVisible] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
 
-    const pageSize = 15;
-    const totalCount = requests.length;
-    const pagesCount = Math.ceil(totalCount / pageSize);
-    const indexOfLastReq = currentPage * pageSize;
-    const indexOfFirstReq = indexOfLastReq - pageSize;
-    const currentReqs = requests.slice(indexOfFirstReq, indexOfLastReq);
+    const {currentPage, setCurrentPage, pagesCount, currentData} = usePagination(requests, 15)
 
     function getRows(data: Array<Request>) {
         return data.map((el) => (
@@ -34,15 +29,15 @@ function RequestTable() {
     }
 
     useEffect(() => {
-        if (!isArrEmpty(currentReqs)) {
+        if (!isArrEmpty(currentData)) {
             setIsVisible(true)
             return
         }
-        if (isVisible && isArrEmpty(currentReqs)) {
+        if (isVisible && isArrEmpty(currentData)) {
             setIsVisible(false)
             return
         }
-    }, [currentReqs]);
+    }, [currentData]);
 
     return (
         <Card w="65vw" h="90vh" shadow="sm" p="lg" radius="md" withBorder>
@@ -69,7 +64,7 @@ function RequestTable() {
                                 <th>Instrument</th>
                             </tr>
                             </thead>
-                            <tbody>{getRows(currentReqs)}</tbody>
+                            <tbody>{getRows(currentData)}</tbody>
                         </Table>
                     </ScrollArea>
 
