@@ -3,64 +3,78 @@ import {Card, ScrollArea, Table, Text} from "@mantine/core";
 import {useAppSelector} from "../../redux/hooks";
 import {isArrEmpty} from "../../helpers/isArrEmpty";
 import {getInstrLabel} from "../../helpers/getInstrLabel";
+import {Request} from "../../types/globalTypes"
+import {Pagination} from '@mantine/core';
 
 function RequestTable() {
     const requests = useAppSelector((state) => state.requests.requests);
 
     const [isVisible, setIsVisible] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
 
-    const rows = requests.map((req, ind) => (
-        <tr key={req.id}>
-            <td>{ind + 1}</td>
-            <td>{req.creationTime}</td>
-            <td>{req.changeTime}</td>
-            <td style={{textTransform: 'capitalize'}}>{req.status}</td>
-            <td style={{textTransform: 'capitalize', color: req.side === 'sell' ? 'red' : 'green'}}>{req.side}</td>
-            <td style={{color: req.side === 'sell' ? 'red' : 'green'}}>{req.price}</td>
-            <td style={{color: req.side === 'sell' ? 'red' : 'green'}}>{req.amount}</td>
-            <td>{getInstrLabel(req.instrument)}</td>
-        </tr>
-    ));
+    const pageSize = 15;
+    const totalCount = requests.length;
+    const pagesCount = Math.ceil(totalCount / pageSize);
+    const indexOfLastReq = currentPage * pageSize;
+    const indexOfFirstReq = indexOfLastReq - pageSize;
+    const currentReqs = requests.slice(indexOfFirstReq, indexOfLastReq);
+
+    function getRows(data: Array<Request>) {
+        return data.map((el) => (
+            <tr key={el.id}>
+                <td>{requests.indexOf(el) + 1}</td>
+                <td>{el.creationTime}</td>
+                <td>{el.changeTime}</td>
+                <td style={{textTransform: 'capitalize'}}>{el.status}</td>
+                <td style={{textTransform: 'capitalize', color: el.side === 'sell' ? 'red' : 'green'}}>{el.side}</td>
+                <td style={{color: el.side === 'sell' ? 'red' : 'green'}}>{el.price}</td>
+                <td style={{color: el.side === 'sell' ? 'red' : 'green'}}>{el.amount}</td>
+                <td>{getInstrLabel(el.instrument)}</td>
+            </tr>))
+    }
 
     useEffect(() => {
-        if (!isArrEmpty(rows)) {
+        if (!isArrEmpty(currentReqs)) {
             setIsVisible(true)
             return
         }
-        if (isVisible && isArrEmpty(rows)) {
+        if (isVisible && isArrEmpty(currentReqs)) {
             setIsVisible(false)
             return
         }
-    }, [rows]);
+    }, [currentReqs]);
 
     return (
         <Card w="65vw" h="90vh" shadow="sm" p="lg" radius="md" withBorder>
-
             {isVisible
-                ? <ScrollArea h="100%">
-                    <Table horizontalSpacing="sm"
-                           verticalSpacing="sm"
-                           fontSize="md"
-                           striped
-                           highlightOnHover
-                           withBorder
-                           withColumnBorders
-                    >
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Creation time</th>
-                            <th>Change time</th>
-                            <th>Status</th>
-                            <th>Side</th>
-                            <th>Price</th>
-                            <th>Amount</th>
-                            <th>Instrument</th>
-                        </tr>
-                        </thead>
-                        <tbody>{rows}</tbody>
-                    </Table>
-                </ScrollArea>
+                ? <>
+                    <ScrollArea h="95%">
+                        <Table horizontalSpacing="sm"
+                               verticalSpacing="sm"
+                               fontSize="md"
+                               striped
+                               highlightOnHover
+                               withBorder
+                               withColumnBorders
+                        >
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Creation time</th>
+                                <th>Change time</th>
+                                <th>Status</th>
+                                <th>Side</th>
+                                <th>Price</th>
+                                <th>Amount</th>
+                                <th>Instrument</th>
+                            </tr>
+                            </thead>
+                            <tbody>{getRows(currentReqs)}</tbody>
+                        </Table>
+                    </ScrollArea>
+
+                    <Pagination mt="sm" page={currentPage} onChange={setCurrentPage} total={pagesCount}/>
+                </>
                 : <Text w="100%"
                         h="100%"
                         display="flex"
