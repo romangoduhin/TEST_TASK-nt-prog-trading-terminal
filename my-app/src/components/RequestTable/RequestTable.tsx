@@ -37,7 +37,7 @@ function RequestTable() {
             <SortingPanel data={requests} onChangeData={setTableData} isChartVisible={isChartVisible} switchChartVisibility={switchChartVisibility}/>
 
             {isChartVisible
-                ? <Chart/>
+                ? <Chart data={requests}/>
                 : isTableVisible
                     ? <>
                         <Table fullData={requests} currentData={currentData}/>

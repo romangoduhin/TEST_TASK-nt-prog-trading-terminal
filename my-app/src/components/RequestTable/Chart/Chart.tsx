@@ -1,30 +1,32 @@
 import React from 'react';
 import {Card, Text} from "@mantine/core";
 import ReactEcharts from "echarts-for-react";
-import {instruments} from "../../Tickers/Ticker/meta";
+import {ChartProps} from "./Chart.types";
+import {formatDate} from "../../../helpers/formatDate";
 
-function Chart() {
+function Chart({data}: ChartProps) { //This is just example of chart
     const option = {
         xAxis: {
             type: 'category',
-            data: instruments.map(el => el.label)
+            data: data.map(el => formatDate(el.creationTime))
         },
         yAxis: {
             type: 'value'
         },
-        series: [{
-            name: "Buy",
-            type: 'bar',
-            data: instruments.map(el => el.buy_price)
-        },
+        series: [
+            {
+                name: "Buy",
+                type: 'bar',
+                data: data.filter(el => el.side === "buy").map(el => el.price)
+            },
             {
                 name: "Sell",
                 type: 'bar',
-                data: instruments.map(el => el.sell_price)
+                data: data.filter(el => el.side === "sell").map(el => el.price)
             },
         ],
         tooltip: {
-            trigger: 'axis'
+            trigger: 'axis',
         },
         legend: {
             data: ['Sell', 'Buy']
