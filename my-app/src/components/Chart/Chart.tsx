@@ -13,16 +13,21 @@ function Chart() {
             type: 'value'
         },
         series: [{
+            name: "Buy",
             type: 'bar',
             data: instruments.map(el => el.buy_price)
         },
             {
+                name: "Sell",
                 type: 'bar',
                 data: instruments.map(el => el.sell_price)
             },
         ],
         tooltip: {
             trigger: 'axis'
+        },
+        legend: {
+            data: ['Sell', 'Buy']
         },
     };
 
