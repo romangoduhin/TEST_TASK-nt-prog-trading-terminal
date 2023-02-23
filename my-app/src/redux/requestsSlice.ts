@@ -30,6 +30,7 @@ export const requestsSlice = createSlice({
                 if (el.id === action.payload.id) {
                     const newEl = {...el}
                     newEl.status = action.payload.status
+                    newEl.changeTime = getCurrentDate()
                     return newEl
                 }
                 return el;

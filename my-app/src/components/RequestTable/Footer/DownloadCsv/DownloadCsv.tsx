@@ -20,6 +20,7 @@ function DownloadCsv({data}: DownloadCsvProps) {
                 cursor: "pointer"
             }}
             data={data}>
+            download csv
         </CsvDownloadButton>
     );
 }
