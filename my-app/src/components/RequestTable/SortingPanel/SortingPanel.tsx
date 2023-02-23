@@ -17,7 +17,7 @@ function SortingPanel({data, onChangeData}: SortingPanelProps) {
     }
 
     return (
-        <SimpleGrid h="5%" mb="sm" spacing="xl" cols={4}>
+        <SimpleGrid h="5%" mb="sm" spacing="xl" cols={3}>
             <Button onClick={() => sortByAmount(1)} uppercase>
                 Sort Amount by Increase
             </Button>
