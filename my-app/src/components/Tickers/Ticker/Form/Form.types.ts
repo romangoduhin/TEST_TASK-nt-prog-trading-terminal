@@ -1,4 +1,4 @@
-import {FormSubmitValues} from "../../../types/globalTypes";
+import {FormSubmitValues} from "../../../../types/globalTypes";
 
 export interface FormValues {
     instrument: string,

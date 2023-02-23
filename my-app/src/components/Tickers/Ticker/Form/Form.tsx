@@ -3,8 +3,8 @@ import {Button, NumberInput, Select, SimpleGrid, Text} from "@mantine/core";
 import {instruments} from "../meta";
 import {useForm} from "@mantine/form";
 import {FormProps, FormValues} from "./Form.types";
-import {Side} from "../../../types/globalTypes";
-import {getId} from "../../../helpers/getId";
+import {Side} from "../../../../types/globalTypes";
+import {getId} from "../../../../helpers/getId";
 
 function Form({handleSubmit}: FormProps) {
     const [sellPrice, setSellPrice] = useState<number>(0);
@@ -45,7 +45,6 @@ function Form({handleSubmit}: FormProps) {
         setBuyPrice(0)
         setSellPrice(0)
     }, [form.values.instrument]);
-
 
     return (
         <form>

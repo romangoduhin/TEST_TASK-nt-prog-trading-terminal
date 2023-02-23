@@ -1,5 +1,5 @@
 import {getRandArrEl} from "../helpers/getRandArrEl";
-import {updatedStatuses} from "../components/Ticker/meta";
+import {updatedStatuses} from "../components/Tickers/Ticker/meta";
 import {updateRequestStatus} from "./requestsSlice";
 import {Dispatch} from "@reduxjs/toolkit";
 
