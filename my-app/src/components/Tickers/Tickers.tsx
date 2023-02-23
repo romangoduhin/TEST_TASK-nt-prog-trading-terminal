@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Button, ScrollArea, SimpleGrid} from "@mantine/core";
-import Ticker from "../Ticker/Ticker";
+import Ticker from "./Ticker/Ticker";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {addTicker} from "../../redux/requestsSlice";
 

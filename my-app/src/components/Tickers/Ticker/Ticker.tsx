@@ -1,10 +1,10 @@
 import React from 'react';
 import {Card, CloseButton, Group} from '@mantine/core';
-import {addRequest, removeTicker} from "../../redux/requestsSlice";
-import {useAppDispatch} from "../../redux/hooks";
+import {addRequest, removeTicker} from "../../../redux/requestsSlice";
+import {useAppDispatch} from "../../../redux/hooks";
 import Form from "./Form/Form";
-import {FormSubmitValues} from "../../types/globalTypes";
-import {updateRequestStatusThunk} from "../../redux/thunks";
+import {FormSubmitValues} from "../../../types/globalTypes";
+import {updateRequestStatusThunk} from "../../../redux/thunks";
 import toast, {Toaster} from "react-hot-toast";
 import {TickerProps} from "./Ticker.types";
 

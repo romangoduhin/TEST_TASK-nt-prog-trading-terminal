@@ -4,5 +4,7 @@ export type sortModeType = -1 | 0 | 1;
 
 export interface SortingPanelProps {
     data: Request[],
-    onChangeData: (newState: Request[])=>void
+    onChangeData: (newState: Request[]) => void,
+    isChartVisible: boolean,
+    switchChartVisibility: () => void,
 }

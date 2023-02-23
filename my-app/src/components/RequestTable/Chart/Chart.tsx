@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card, Text} from "@mantine/core";
 import ReactEcharts from "echarts-for-react";
-import {instruments} from "../Ticker/meta";
+import {instruments} from "../../Tickers/Ticker/meta";
 
 function Chart() {
     const option = {
