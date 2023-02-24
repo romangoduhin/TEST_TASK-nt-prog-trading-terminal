@@ -3,7 +3,7 @@ import {AuthFormValues, AuthModalProps} from "./AuthModal.types";
 import {Group, Modal, TextInput, Button, SimpleGrid} from "@mantine/core";
 import {useForm, isEmail} from "@mantine/form";
 
-function AuthModal({isOpen, setOpen}: AuthModalProps) {
+function AuthModal({isOpen}: AuthModalProps) {
     const form = useForm<AuthFormValues>({
         initialValues: {
             email: "",
@@ -23,9 +23,9 @@ function AuthModal({isOpen, setOpen}: AuthModalProps) {
     return (
         <Modal
             opened={isOpen}
-            onClose={() => setOpen}
             withCloseButton={false}
             title="Authorize to use the terminal"
+            onClose={() => {}}
         >
             <SimpleGrid cols={1} verticalSpacing="xl">
                 <form>

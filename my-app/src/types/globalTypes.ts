@@ -12,6 +12,12 @@ export interface Request {
     instrument: string,
 }
 
+export interface User {
+    email: string,
+    token: string,
+    id: string,
+}
+
 export interface FormSubmitValues {
     id: number,
     instrument: string,

@@ -1,8 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
 import type {PayloadAction} from '@reduxjs/toolkit';
-import {RequestsState} from "./types";
-import {FormSubmitValues, Request, ReqUpdateValues} from "../types/globalTypes";
-import {getCurrentDate} from "../helpers/getCurrentDate";
+import {RequestsState} from "../types";
+import {FormSubmitValues, Request, ReqUpdateValues} from "../../types/globalTypes";
+import {getCurrentDate} from "../../helpers/getCurrentDate";
 
 const initialState: RequestsState = {
     requests: [],

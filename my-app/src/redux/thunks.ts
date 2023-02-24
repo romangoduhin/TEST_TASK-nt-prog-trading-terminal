@@ -1,6 +1,6 @@
 import {getRandArrEl} from "../helpers/getRandArrEl";
 import {updatedStatuses} from "../components/Tickers/Ticker/meta";
-import {updateRequestStatus} from "./requestsSlice";
+import {updateRequestStatus} from "./slices/requestsSlice";
 import {Dispatch} from "@reduxjs/toolkit";
 
 export const updateRequestStatusThunk = (id: number) => (dispatch: Dispatch) => { //here I emulate the status updating
