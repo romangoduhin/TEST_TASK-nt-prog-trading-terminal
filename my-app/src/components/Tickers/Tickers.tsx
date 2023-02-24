@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Button, ScrollArea, SimpleGrid} from "@mantine/core";
 import Ticker from "./Ticker/Ticker";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks";
-import {addTicker} from "../../redux/requestsSlice";
+import {addTicker} from "../../redux/slices/requestsSlice";
 
 function Tickers() {
     const tickers = useAppSelector((state) => state.requests.tickers);

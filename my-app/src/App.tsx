@@ -1,8 +1,12 @@
 import RequestTable from "./components/RequestTable/RequestTable";
 import {Card} from "@mantine/core";
 import Tickers from "./components/Tickers/Tickers";
+import AuthModal from "./components/AuthModal/AuthModal";
+import UseAuth from "./helpers/hooks/useAuth";
 
 function App() {
+    const {isAuth} = UseAuth();
+
     return (
         <Card shadow="sm"
               display="flex"
@@ -13,6 +17,7 @@ function App() {
         >
             <Tickers/>
             <RequestTable/>
+            <AuthModal isOpen={!isAuth}/>
         </Card>
     )
 }

@@ -12,6 +12,10 @@ export interface Request {
     instrument: string,
 }
 
+export interface User {
+    email: string | null,
+}
+
 export interface FormSubmitValues {
     id: number,
     instrument: string,

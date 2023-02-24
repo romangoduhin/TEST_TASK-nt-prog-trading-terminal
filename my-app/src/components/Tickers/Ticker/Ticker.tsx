@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, CloseButton, Group} from '@mantine/core';
-import {addRequest, removeTicker} from "../../../redux/requestsSlice";
+import {addRequest, removeTicker} from "../../../redux/slices/requestsSlice";
 import {useAppDispatch} from "../../../redux/hooks";
 import Form from "./Form/Form";
 import {FormSubmitValues} from "../../../types/globalTypes";
