@@ -17,7 +17,7 @@ function App() {
         >
             <Tickers/>
             <RequestTable/>
-            <AuthModal isOpen={isAuth}/>
+            <AuthModal isOpen={!isAuth}/>
         </Card>
     )
 }

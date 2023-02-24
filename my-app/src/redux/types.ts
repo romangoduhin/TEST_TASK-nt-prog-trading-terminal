@@ -6,7 +6,5 @@ export interface RequestsState {
 }
 
 export interface UserState {
-    email: string,
-    token: string,
-    id: string,
+    email: string | null,
 }

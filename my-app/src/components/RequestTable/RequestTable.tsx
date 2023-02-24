@@ -6,7 +6,7 @@ import usePagination from "../../helpers/hooks/usePagination";
 import Table from "./Table/Table"
 import Footer from "./Footer/Footer";
 import EmptyContent from "./EmptyContent/EmptyContent";
-import SortingPanel from "./SortingPanel/SortingPanel";
+import NavBar from "./NavBar/NavBar";
 import Chart from "./Chart/Chart";
 
 function RequestTable() {
@@ -34,7 +34,7 @@ function RequestTable() {
 
     return (
         <Card w="65vw" h="90vh" shadow="sm" p="lg" radius="md" withBorder>
-            <SortingPanel data={requests} onChangeData={setTableData} isChartVisible={isChartVisible} switchChartVisibility={switchChartVisibility}/>
+            <NavBar data={requests} onChangeData={setTableData} isChartVisible={isChartVisible} switchChartVisibility={switchChartVisibility}/>
 
             {isChartVisible
                 ? <Chart data={requests}/>

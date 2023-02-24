@@ -4,9 +4,7 @@ import {UserState} from "../types";
 import {User} from "../../types/globalTypes";
 
 const initialState: UserState = {
-    email: "",
-    token: "",
-    id: "",
+    email: null,
 }
 
 export const userSlice = createSlice({
@@ -15,13 +13,9 @@ export const userSlice = createSlice({
     reducers: {
         setUser: (state, action: PayloadAction<User>) => {
             state.email = action.payload.email;
-            state.token = action.payload.token;
-            state.id = action.payload.id;
         },
         removeUser: (state) => {
-            state.email = "";
-            state.token = "";
-            state.id = "";
+            state.email = null;
         }
     },
 })
