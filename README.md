@@ -1,9 +1,8 @@
-# nt-prog-trading-terminal
-# [Check it on Vercel](https://nt-prog-trading-terminal.vercel.app/)
+## [Check it on Vercel](https://nt-prog-trading-terminal.vercel.app/)
 
 ## Data for authorization:
-### Email: test@test.com
-### Password: test@test.com
+- Email: test@test.com
+- Password: test@test.com
 
 #How to start the project localy?
 - git clone this project
