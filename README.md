@@ -4,13 +4,13 @@
 - Email: test@test.com
 - Password: test@test.com
 
-#How to start the project localy?
+# How to start the project localy?
 - git clone this project
 - cd my-app
 - npm i
 - npm run dev
 
-#How to use this terminal?
+# How to use this terminal?
 1) First of all you have to Sign In or Sign Up (just use test data for email and password: test@test.com)
 2) As you can see there are Tickers on the left side of the app
 - you can add one more ticker
